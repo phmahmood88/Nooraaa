@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>رسالة إلى Noora</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+height:100vh;
+overflow:hidden;
+text-align:center;
+color:white;
+}
+
+h1{
+margin-top:120px;
+font-size:45px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px white;}
+to{ text-shadow:0 0 30px red;}
+}
+
+button{
+margin-top:40px;
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:12px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+}
+
+#page2{
+display:none;
+padding:40px;
+}
+
+.message{
+font-size:24px;
+margin-top:30px;
+line-height:1.8;
+}
+
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation: float 6s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="page1">
+
+<h1>Noora ❤️</h1>
+<p>عندي رسالة خاصة إلك...</p>
+
+<button onclick="start()">افتحي الرسالة</button>
+
+</div>
+
+
+<div id="page2">
+
+<h1>إلى Noora</h1>
+
+<div class="message" id="text"></div>
+
+<br><br>
+
+<iframe width="300" height="170"
+src="https://www.youtube.com/embed?listType=search&list=يا+نورة+حسام+الرسام"
+allow="autoplay">
+</iframe>
+
+</div>
+
+
+<script>
+
+function start(){
+
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="block";
+
+showMessage();
+
+}
+
+const lines=[
+"يا نورة...",
+"اسمك مو بس اسم...",
+"اسمك نور يضوي القلب.",
+"من أشوف اسمك أبتسم بدون سبب.",
+"ويمكن ما أعرف أوصف كل شي...",
+"بس أعرف إن وجودك بالدنيا شي جميل.",
+"هاي الأغنية إلك ❤️"
+];
+
+let i=0;
+
+function showMessage(){
+
+if(i<lines.length){
+
+document.getElementById("text").innerHTML+=lines[i]+"<br>";
+
+i++;
+
+setTimeout(showMessage,2000);
+
+}
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
